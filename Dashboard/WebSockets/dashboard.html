@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Dashboard Estacionamiento</title>
+
+  <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+
+  <style>
+    body{font-family:system-ui,Segoe UI,Roboto,Arial;margin:0;background:#0b1220;color:#e7eefc}
+    .wrap{max-width:1000px;margin:0 auto;padding:18px}
+    .top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center}
+    .brand{font-weight:900;letter-spacing:.3px}
+    .pill{padding:6px 10px;border-radius:999px;background:#121c33;border:1px solid #223156;font-size:12px}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:12px;margin-top:12px}
+    .card{grid-column:span 12;background:#0f1830;border:1px solid #223156;border-radius:16px;padding:14px}
+    @media(min-width:850px){ .card.third{grid-column:span 4} .card.half{grid-column:span 6} }
+    .big{font-size:34px;font-weight:900}
+    .muted{opacity:.75}
+    .spots{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:10px}
+    .spot{border-radius:14px;border:1px solid #223156;padding:12px;background:#0b1220}
+    .t{display:flex;justify-content:space-between;align-items:center;font-weight:800}
+    .tag{font-size:12px;padding:4px 8px;border-radius:999px;border:1px solid #223156;background:#121c33}
+    .ok{background:#0f2a1a;border-color:#256b45}
+    .bad{background:#2a1010;border-color:#7a2a2a}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace}
+    .log{margin-top:10px;max-height:240px;overflow:auto;border:1px solid #223156;border-radius:12px;background:#0b1220;padding:10px}
+    .line{padding:6px 0;border-bottom:1px dashed rgba(231,238,252,.15)}
+    .line:last-child{border-bottom:none}
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <div class="brand">Estacionamiento (MQTT)</div>
+        <div class="muted" style="font-size:13px">Conectado desde Raspberry Pi → Tu Navegador</div>
+      </div>
+      <div class="pill mono" id="conn">Conectando...</div>
+    </div>
+
+    <div class="grid">
+      <div class="card third">
+        <div class="muted">Lugares Libres</div>
+        <div class="big"><span id="free">-</span>/4</div>
+        <div class="muted">Actualizándose por MQTT</div>
+      </div>
+
+      <div class="card third">
+        <div class="muted">Conexión</div>
+        <div class="mono">ws://172.28.240.168:9001</div>
+        <div class="muted" style="margin-top:6px">Topic Base: <span class="mono">escom/estacionamiento</span></div>
+      </div>
+
+      <div class="card third">
+        <div class="muted">Último mensaje</div>
+        <div class="big" style="font-size:20px" id="last">--</div>
+        <div class="muted" id="time">--</div>
+      </div>
+
+      <div class="card half">
+        <div class="muted">Espacios</div>
+        <div class="spots" id="spots"></div>
+      </div>
+
+      <div class="card half">
+        <div class="muted">Log (cambios)</div>
+        <div class="log mono" id="log"></div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  const WS_URL = "ws://172.28.240.168:9001";
+  const topics = [
+    "escom/estacionamiento/espacio1",
+    "escom/estacionamiento/espacio2",
+    "escom/estacionamiento/espacio3",
+    "escom/estacionamiento/espacio4"
+  ];
+
+  const state = ["?", "?", "?", "?"];
+
+  const spotsDiv = document.getElementById("spots");
+  const freeEl = document.getElementById("free");
+  const connEl = document.getElementById("conn");
+  const lastEl = document.getElementById("last");
+  const timeEl = document.getElementById("time");
+  const logEl = document.getElementById("log");
+
+  function render(){
+    spotsDiv.innerHTML = "";
+    let free = 0;
+    for(let i=0;i<4;i++){
+      const occ = (state[i] === "OCUPADO");
+      if(state[i] === "LIBRE") free++;
+
+      const cls = occ ? "bad" : "ok";
+      const tag = occ ? "OCUPADO" : "LIBRE";
+
+      spotsDiv.innerHTML += `
+        <div class="spot ${cls}">
+          <div class="t">
+            <div>Espacio ${i+1}</div>
+            <div class="tag">${tag}</div>
+          </div>
+          <div class="muted">Estado: <span class="mono">${state[i]}</span></div>
+        </div>
+      `;
+    }
+    freeEl.textContent = free;
+  }
+
+  function addLog(text){
+    const now = new Date();
+    const line = document.createElement("div");
+    line.className = "line";
+    line.textContent = `[${now.toLocaleTimeString()}] ${text}`;
+    logEl.prepend(line);
+  }
+
+  const clientId = "web-dashboard-" + Math.random().toString(16).slice(2);
+
+  const client = mqtt.connect(WS_URL, {
+    clientId,
+    clean: true,
+    reconnectPeriod: 1000,
+    connectTimeout: 5000
+  });
+
+  client.on("connect", () => {
+    connEl.textContent = "Conexión";
+    connEl.style.borderColor = "#256b45";
+    connEl.style.background = "#0f2a1a";
+
+    client.subscribe(topics, { qos: 0 }, (err) => {
+      addLog(err ? ("Error suscribiendo: " + err.message) : ("Suscrito a: " + topics.join(", ")));
+    });
+  });
+
+  client.on("reconnect", () => {
+    connEl.textContent = "Reconectando...";
+    connEl.style.borderColor = "#2a3a66";
+    connEl.style.background = "#121c33";
+  });
+
+  client.on("error", (e) => addLog("Error MQTT: " + e.message));
+
+  client.on("message", (topic, payload) => {
+    const msg = payload.toString();
+    const idx = topics.indexOf(topic);
+    if(idx !== -1){
+      const prev = state[idx];
+      state[idx] = msg;
+
+      const now = new Date();
+      lastEl.textContent = `${topic} = ${msg}`;
+      timeEl.textContent = now.toLocaleString();
+
+      if(prev !== msg) addLog(`Cambio: Espacio ${idx+1} -> ${msg}`);
+      render();
+    }
+  });
+
+  render();
+</script>
+</body>
+</html>
