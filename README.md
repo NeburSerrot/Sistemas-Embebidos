@@ -17,13 +17,13 @@ El sistema es capaz de detectar la presencia vehicular mediante sensores ultras�
 * **Dual-Stack MQTT:** El Broker Mosquitto fue re-ingenierizado para escuchar simultáneamente en:
     * Puerto `1883` (TCP) para microcontroladores ESP32.
     * Puerto `9001` (WebSockets) para el Dashboard Web.
-* **📉 Envío por Excepción:** Lógica de firmware optimizada que solo transmite datos cuando existe un cambio de estado físico (LIBRE ↔ OCUPADO), ahorrando ancho de banda y procesamiento.
-* **🖼️ Interfaz Resiliente:** Los recursos gráficos institucionales (Logos IPN/ESCOM) fueron codificados en **Base64** e inyectados en el flujo de Node-RED, eliminando la dependencia de servidores de imágenes externos (Wikipedia/CDN).
-* **🖥️ Modo Headless:** Servidor administrado remotamente vía SSH y VNC.
+* **Envío por Excepción:** Lógica de firmware optimizada que solo transmite datos cuando existe un cambio de estado físico (LIBRE ↔ OCUPADO), ahorrando ancho de banda y procesamiento.
+* **Interfaz Resiliente:** Los recursos gráficos institucionales (Logos IPN/ESCOM) fueron codificados en **Base64** e inyectados en el flujo de Node-RED, eliminando la dependencia de servidores de imágenes externos.
+* **Modo Headless:** Servidor administrado remotamente vía VNC y/o SSH.
 
 ---
 
-## 🏗 Arquitectura del Sistema
+## Arquitectura del Sistema
 
 1.  **Nodos de Sensores (Edge):** ESP32 con sensores HC-SR04. Realizan la adquisición de datos y filtrado de señal.
 2.  **Transporte:** WiFi local sobre protocolo MQTT.
@@ -34,7 +34,7 @@ El sistema es capaz de detectar la presencia vehicular mediante sensores ultras�
 
 ---
 
-## 🛠 Lista de Materiales (Hardware)
+## Lista de Materiales (Hardware)
 
 | Componente | Cantidad | Descripción |
 | :--- | :---: | :--- |
