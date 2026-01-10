@@ -36,13 +36,20 @@ El sistema es capaz de detectar la presencia vehicular mediante sensores ultras�
 
 ## Lista de Materiales (Hardware)
 
-| Componente | Cantidad | Descripción |
-| :--- | :---: | :--- |
-| **Raspberry Pi 4 Model B** | 1 | Servidor Central, Broker y Access Point. |
-| **ESP32 DevKit V1** | 1 | Microcontrolador (Cliente MQTT). |
-| **Sensor HC-SR04** | 4 | Sensores ultrasónicos de medición de distancia. |
-| **Protoboard & Jumpers** | N/A | Interconexión de circuitos. |
-| **Fuente de Alimentación** | 1 | 5V 3A (USB-C) para la Raspberry Pi. |
+| Cant. | Componente | Descripción / Nota Técnica |
+| :---: | :--- | :--- |
+| 1 | **Raspberry Pi 4 Model B** | Servidor Central y Broker MQTT. |
+| 1 | **Memoria MicroSD** | 32GB / 64GB (Clase 10 recomendada) para el SO. |
+| 1 | **Fuente (Raspberry Pi)** | Alimentación dedicada para el servidor. |
+| 1 | **Fuente (Sensores/ESP)** | 5V 2A. Alimentación independiente para la etapa de potencia. |
+| 2 | **Protoboards** | 830 puntos c/u para montaje de circuitos. |
+| 1 | **Cable USB a MicroUSB** | Para carga de código y depuración serial del ESP32. |
+| 1 | **Monitor** | *Uso temporal:* Habilitación inicial del modo Headless. |
+| 1 | **Cable Ethernet** | *Uso temporal:* Configuración inicial del Hotspot. |
+| 1 | **Cable HDMI a MicroHDMI** | *Uso temporal:* Visualización de Raspbian OS. |
+| 4 | **Pares de Resistencias** | 1kΩ y 2.2kΩ. Divisor de voltaje para protección de GPIO (Adaptación de nivel 5V $\to$ 3.3V). |
+| N/A | **Conectores** | Alambre cal. 22 o Jumpers Macho-Macho. |
+| 4 | **Sensores HC-SR04** | Sensores ultrasónicos de detección. |
 
 ---
 
