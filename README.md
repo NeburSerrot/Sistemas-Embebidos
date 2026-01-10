@@ -67,20 +67,26 @@ El sistema es capaz de detectar la presencia vehicular mediante sensores ultras�
 
 ## Galería de Evidencias
 
-### 1. Tablero de Control (Dashboards)
+### 1. Conexión al Hotspot
+| Título Imagen 1 | Título Imagen 2 |
+| :---: | :---: |
+| ![Nombre 1](Imagenes/9_Despliegue/Imagen_09_Hotspot.jpg) | ![Nombre 2](Imagenes/9_Despliegue/Imagen_10_Hotspot.jpg) |
+
+### 2. Tablero de Control (Dashboards)
 *Estado del sistema mostrando espacios libres y ocupados.*
 
 ![Dashboard Final](Imagenes/9_Despliegue/Imagen_03_Despligue_Node-RED_WebSockets.jpg)
 
-### 2. Pruebas de Latencia (Backend)
+### 3. Pruebas de Latencia (Backend)
 *Visualización de flujo de datos MQTT en tiempo real vía terminal.*
 
 ![Terminal MQTT](Imagenes/9_Despliegue/Imagen_06_Broker_MQTT.jpg)
 
-### 3. Prototipo Físico
+### 4. Prototipo Físico
 *Montaje de la maqueta con sensores y validación física.*
 
 ![Maqueta Física](Imagenes/9_Despliegue/Imagen_07_Presentacion_Fisica.jpg)
+
 
 ---
 
