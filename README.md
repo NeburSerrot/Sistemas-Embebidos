@@ -106,3 +106,23 @@ allow_anonymous true
 
 listener 9001
 protocol websockets
+````
+### 3. Firmware (ESP32)
+1. Abrir el archivo Estacionamiento.ino (ubicado en /ESP-WROOM-32/Code) con Arduino IDE.
+2. Instalar la librería PubSubClient desde el gestor de librerías.
+3. Modificar las variables de red en el código:
+   ``
+   const char* ssid = "Escuela_Hotspot"; // Nombre de tu red Pi
+   const char* mqtt_server = "192.168.X.X"; // IP de tu Raspberry
+   ``
+4. Cargar el código a la placa ESP32.
+
+### 4. Despliegue del Dashboard (Frontend)
+El archivo `dashboard.html` ubicado en la carpeta `/Dashboard/WebSockets` funciona de manera independiente.
+1.  Abrir el archivo `dashboard.html` con cualquier editor de texto.
+2.  Buscar la línea: `const WS_URL = "ws://172.28.240.168:9001";`
+3.  Reemplazar la IP por la dirección IP de tu Raspberry Pi.
+4.  Guardar y abrir el archivo directamente en cualquier navegador web (Chrome/Firefox/Edge).
+
+## Autores
+
