@@ -58,19 +58,19 @@ El sistema es capaz de detectar la presencia vehicular mediante sensores ultras�
 * **S.O.:** Raspberry Pi OS Lite (64-bit).
 * **Middleware:** Eclipse Mosquitto (Broker MQTT).
 * **Visualización (Arquitectura Híbrida):**
-    * **Dashboard 1 (Backend/Logic):** Desarrollado en **Node-RED**. Se conecta vía protocolo nativo MQTT (Puerto `1883`) para orquestación y lógica de control.
-    * **Dashboard 2 (Frontend Web):** Interfaz desarrollada por el equipo de Frontend. Se conecta directamente vía **WebSockets** (Puerto `9001`) para visualización ligera en navegadores.
+    * **Dashboard 1 (Backend Logic):** Desarrollado en **Node-RED**. Se conecta vía protocolo nativo MQTT (Puerto `1883`) para orquestación, lógica de control y alertas.
+    * **Dashboard 2 (Frontend Ligero):** Single Page Application (SPA) desarrollada con **HTML5, CSS3 y MQTT.js**. Se conecta directamente al Broker vía **WebSockets** (Puerto `9001`), permitiendo monitoreo desde cualquier dispositivo móvil sin recargar la página.
 * **Firmware:** C++ (Arduino Framework) + Librería `PubSubClient`.
-* **Herramientas:** SSH, Real VNC Viewer, Mosquitto Clients.
+* **Herramientas:** SSH, Real VNC Viewer.
 
 ---
 
-## 📸 Galería de Evidencias
+## Galería de Evidencias
 
-### 1. Tablero de Control (Dashboard)
-*Estado del sistema mostrando espacios libres y ocupados con identidad institucional.*
+### 1. Tablero de Control (Dashboards)
+*Estado del sistema mostrando espacios libres y ocupados.*
 
-![Dashboard Final](img/dashboard_final.png)
+![Dashboard Final](Imágenes del Desarrollo/9. Despliegue/Imagen_03_Despligue_Node-RED_&_WebSockets.jpg)
 *(Asegúrate de subir tu captura final a una carpeta llamada 'img' y ajustar este nombre)*
 
 ### 2. Pruebas de Latencia (Backend)
@@ -85,7 +85,14 @@ El sistema es capaz de detectar la presencia vehicular mediante sensores ultras�
 
 ---
 
-## ⚙️ Instalación y Reproducción
+## Instalación y Reproducción
+
+### Despliegue del Dashboard Web (Frontend)
+El archivo `dashboard.html` ubicado en la carpeta `/Dashboard/WebSockets` funciona de manera independiente.
+1.  Abrir el archivo `dashboard.html` con cualquier editor de texto.
+2.  Buscar la línea: `const WS_URL = "ws://172.28.240.168:9001";`
+3.  Reemplazar la IP por la dirección IP de tu Raspberry Pi.
+4.  Guardar y abrir el archivo directamente en cualquier navegador web (Chrome/Firefox/Edge).
 
 ### Requisitos Previos
 * Raspberry Pi con Raspberry Pi OS.
@@ -99,3 +106,4 @@ allow_anonymous true
 
 listener 9001
 protocol websockets
+
