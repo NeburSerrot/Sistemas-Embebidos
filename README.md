@@ -75,12 +75,12 @@ El sistema es capaz de detectar la presencia vehicular mediante sensores ultras�
 ### 2. Pruebas de Latencia (Backend)
 *Visualización de flujo de datos MQTT en tiempo real vía terminal.*
 
-![Terminal MQTT](img/terminal_mqtt.png)
+![Terminal MQTT](Imagenes/9_Despliegue/Imagen_06_Broker_MQTT.jpg)
 
 ### 3. Prototipo Físico
 *Montaje de la maqueta con sensores y validación física.*
 
-![Maqueta Física](img/maqueta.png)
+![Maqueta Física](Imagenes/9_Despliegue/Imagen_07_Presentacion_Fisica.jpg)
 
 ---
 
@@ -105,4 +105,3 @@ allow_anonymous true
 
 listener 9001
 protocol websockets
-
