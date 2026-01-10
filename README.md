@@ -53,13 +53,15 @@ El sistema es capaz de detectar la presencia vehicular mediante sensores ultras�
 
 ---
 
-## 💻 Stack de Software
+## Stack de Software
 
 * **S.O.:** Raspberry Pi OS Lite (64-bit).
-* **Middleware:** Eclipse Mosquitto (Configurado con WebSockets).
-* **Backend/Frontend:** Node-RED.
+* **Middleware:** Eclipse Mosquitto (Broker MQTT).
+* **Visualización (Arquitectura Híbrida):**
+    * **Dashboard 1 (Backend/Logic):** Desarrollado en **Node-RED**. Se conecta vía protocolo nativo MQTT (Puerto `1883`) para orquestación y lógica de control.
+    * **Dashboard 2 (Frontend Web):** Interfaz desarrollada por el equipo de Frontend. Se conecta directamente vía **WebSockets** (Puerto `9001`) para visualización ligera en navegadores.
 * **Firmware:** C++ (Arduino Framework) + Librería `PubSubClient`.
-* **Herramientas:** SSH, VNC Viewer, Mosquitto Clients.
+* **Herramientas:** SSH, Real VNC Viewer, Mosquitto Clients.
 
 ---
 
