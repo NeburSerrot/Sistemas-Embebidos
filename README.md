@@ -1,8 +1,8 @@
-# 🚗 Sistema de Estacionamiento Inteligente IoT (Edge Computing)
+# Sistema de Estacionamiento Inteligente IoT
 
 ![Status](https://img.shields.io/badge/Status-Finalizado-success)
 ![Institution](https://img.shields.io/badge/ESCOM-IPN-blue)
-![Area](https://img.shields.io/badge/Area-Sistemas%20Embebidos-orange)
+![Area](https://img.shields.io/badge/Unidad-Sistemas%20Embebidos-orange)
 
 > **Proyecto de monitoreo en tiempo real basado en arquitectura Fog Computing (Niebla), capaz de operar de manera autónoma sin conexión a internet.**
 
