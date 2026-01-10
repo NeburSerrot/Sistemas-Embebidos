@@ -68,7 +68,7 @@ El sistema es capaz de detectar la presencia vehicular mediante sensores ultras�
 ## Galería de Evidencias
 
 ### 1. Conexión al Hotspot
-| Título Imagen 1 | Título Imagen 2 |
+| Punto de Acceso Móvil | Dispositivos Conectados |
 | :---: | :---: |
 | ![Nombre 1](Imagenes/9_Despliegue/Imagen_09_Hotspot.jpg) | ![Nombre 2](Imagenes/9_Despliegue/Imagen_10_Hotspot.jpg) |
 
