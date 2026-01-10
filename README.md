@@ -70,8 +70,7 @@ El sistema es capaz de detectar la presencia vehicular mediante sensores ultras�
 ### 1. Tablero de Control (Dashboards)
 *Estado del sistema mostrando espacios libres y ocupados.*
 
-![Dashboard Final](Imágenes del Desarrollo/9. Despliegue/Imagen_03_Despligue_Node-RED_&_WebSockets.jpg)
-*(Asegúrate de subir tu captura final a una carpeta llamada 'img' y ajustar este nombre)*
+![Dashboard Final](Imagenes/9_Despliegue/Imagen_03_Despligue_Node-RED_WebSockets.jpg)
 
 ### 2. Pruebas de Latencia (Backend)
 *Visualización de flujo de datos MQTT en tiempo real vía terminal.*
