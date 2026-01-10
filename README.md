@@ -125,4 +125,8 @@ El archivo `dashboard.html` ubicado en la carpeta `/Dashboard/WebSockets` funcio
 4.  Guardar y abrir el archivo directamente en cualquier navegador web (Chrome/Firefox/Edge).
 
 ## Autores
+Proyecto desarrollado para la unidad de aprendizaje Sistemas Embebidos en la Escuela Superior de Cómputo (ESCOM - IPN).
+* **Ayala Fuentes Sunem Gizeht**
+* **Michelle Anguiano Rodea**
+* **Torres Covarrubias Rubén**
 
