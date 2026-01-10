@@ -13,8 +13,8 @@ El sistema es capaz de detectar la presencia vehicular mediante sensores ultras�
 
 ## Características Técnicas Destacadas
 
-* ** Arquitectura Offline (Fog Computing):** El sistema genera su propia infraestructura de red (Hotspot WiFi) y no requiere salida a Internet para funcionar.
-* **📡 Dual-Stack MQTT:** El Broker Mosquitto fue re-ingenierizado para escuchar simultáneamente en:
+* **Arquitectura Offline (Fog Computing):** El sistema genera su propia infraestructura de red (Hotspot WiFi) y no requiere salida a Internet para funcionar.
+* **Dual-Stack MQTT:** El Broker Mosquitto fue re-ingenierizado para escuchar simultáneamente en:
     * Puerto `1883` (TCP) para microcontroladores ESP32.
     * Puerto `9001` (WebSockets) para el Dashboard Web.
 * **📉 Envío por Excepción:** Lógica de firmware optimizada que solo transmite datos cuando existe un cambio de estado físico (LIBRE ↔ OCUPADO), ahorrando ancho de banda y procesamiento.
