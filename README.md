@@ -4,11 +4,7 @@
 ![Institution](https://img.shields.io/badge/ESCOM-IPN-blue)
 ![Area](https://img.shields.io/badge/Unidad-Sistemas%20Embebidos-orange)
 
-> **Proyecto de monitoreo en tiempo real basado en arquitectura Fog Computing (Niebla), capaz de operar de manera autónoma sin conexión a internet.**
-
----
-
-## 📖 Descripción del Proyecto
+## Descripción del Proyecto
 Este sistema permite la gestión y visualización de espacios de estacionamiento utilizando una arquitectura distribuida. A diferencia de soluciones IoT tradicionales que dependen de la nube, este proyecto implementa **Fog Computing** mediante una Raspberry Pi 4 configurada como Gateway y Servidor Central, garantizando baja latencia y alta disponibilidad.
 
 El sistema es capaz de detectar la presencia vehicular mediante sensores ultrasónicos y actualizar un Dashboard Web en tiempo real utilizando protocolos ligeros (MQTT) y tecnologías web modernas (WebSockets), todo dentro de una red local aislada (Hotspot).
